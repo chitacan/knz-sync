@@ -11,3 +11,6 @@ inputs:
   MOVE_TO:
     description: 'column name that task move to'
     required: true
+  GITHUB_TOKEN:
+    description: 'github token'
+    required: true
