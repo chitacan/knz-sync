@@ -23,5 +23,5 @@ jobs:
           rm -rf node_modules lib package.json package-lock.json .gitignore .github
           git add .
           git commit -m "Deploy from ${GITHUB_SHA}" --quiet
-          git push https://chitacan:${{ secrets.PUBLISH_TOKEN }}@github.com/$GITHUB_REPOSITORY.git dist --force
+          git push https://chitacan:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git dist --force
 
