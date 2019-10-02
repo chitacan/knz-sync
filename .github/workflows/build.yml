@@ -10,15 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@1
+        uses: actions/checkout@master
       - name: install deps
         run: npm install
       - name: build
         run: npm run build
-      - name: clean up
+      - name: clean up and push
         run: |
-          git branch -D dist
+          git config --global user.email "chitacan@gmail.com"
+          git config --global user.name "chitacan"
           git checkout --orphan dist
           rm -rf node_modules lib package.json package-lock.json .gitignore .github
+          git add .
           git commit -m "Deploy from ${GITHUB_SHA}" --quiet
+          git push https://chitacan:${{ secrets.PUBLISH_TOKEN }}@github.com/$GITHUB_REPOSITORY.git dist --force
 
