@@ -1,0 +1,13 @@
+name: knz-sync
+description: 'move kanbanize task from github'
+author: 'kyungyeol kim <chitacan@gmail.com>'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+inputs:
+  API_KEY:
+    description: 'kanbanize api key'
+    required: true
+  MOVE_TO:
+    description: 'column name that task move to'
+    required: true
