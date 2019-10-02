@@ -1,0 +1,24 @@
+name: 'build'
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build_and_push:
+    name: 'build and push to dist branch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@1
+      - name: install deps
+        run: npm install
+      - name: build
+        run: npm run build
+      - name: clean up
+        run: |
+          git branch -D dist
+          git checkout --orphan dist
+          rm -rf node_modules lib package.json package-lock.json .gitignore .github
+          git commit -m "Deploy from ${GITHUB_SHA}" --quiet
+
