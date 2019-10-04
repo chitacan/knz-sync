@@ -17,8 +17,8 @@ jobs:
         run: npm run build
       - name: clean up and push
         run: |
-          git config --global user.email "chitacan@gmail.com"
-          git config --global user.name "chitacan"
+          git config --global user.email '${GITHUB_ACTOR}@github-action.run'
+          git config --global user.name $GITHUB_ACTOR
           git checkout --orphan dist
           rm -rf node_modules lib package.json package-lock.json .gitignore .github README.md
           git add .
