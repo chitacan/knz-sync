@@ -14,3 +14,7 @@ inputs:
   GITHUB_TOKEN:
     description: 'github token'
     required: true
+  PREFIX:
+    description: 'branch prefix'
+    required: false
+    default: 'KB-'
